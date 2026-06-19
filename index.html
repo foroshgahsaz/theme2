@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="فروشگاه آنلاین مبلمان و دکوراسیون داخلی — مجموعه خانه دلنشین با طراحی معاصر و کیفیت برتر" />
+  <title>خانه دلنشین | فروشگاه مبلمان و دکوراسیون</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: { 50: '#faf9f7', 100: '#f7f4ef', 200: '#ede8df', 300: '#e0d8cc' },
+            stone: { 850: '#1c1917', 750: '#292524' },
+            gold: { DEFAULT: '#c9a96e', dark: '#a88b4a' },
+          },
+          fontFamily: {
+            sans: ['Vazirmatn', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="assets/css/custom.css" />
+</head>
+<body class="bg-cream-50 text-stone-850 antialiased">
+
+  <!-- نوار بالایی -->
+  <div class="bg-stone-850 text-cream-100 text-xs sm:text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between py-2.5 gap-2">
+        <div class="flex items-center gap-4">
+          <span class="hidden sm:inline text-cream-300">ما را دنبال کنید</span>
+          <a href="#" class="hover:text-gold transition-colors">اینستاگرام</a>
+          <a href="#" class="hover:text-gold transition-colors">تلگرام</a>
+        </div>
+        <p class="text-center">
+          <span class="text-gold font-medium">خوش آمدید!</span>
+          همین حالا ثبت‌نام کنید و
+          <a href="#" class="underline underline-offset-2 hover:text-gold transition-colors">۱۰٪ تخفیف</a>
+          بگیرید
+        </p>
+        <p class="hidden md:block text-cream-300">ارسال رایگان برای سفارش‌های بالای ۵ میلیون تومان*</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- هدر -->
+  <header id="site-header" class="sticky top-0 z-50 bg-cream-50 transition-all duration-300 border-b border-cream-200/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-20">
+
+        <!-- منوی موبایل -->
+        <button id="menu-btn" class="lg:hidden p-2 -mr-2 text-stone-750" aria-label="منو">
+          <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+
+        <!-- لوگو -->
+        <a href="#" class="text-xl lg:text-2xl font-bold tracking-tight">
+          خانه<span class="text-gold">دلنشین</span>
+        </a>
+
+        <!-- ناوبری دسکتاپ -->
+        <nav class="hidden lg:flex items-center gap-8 text-sm font-medium">
+          <a href="#" class="nav-link hover:text-gold transition-colors">خانه</a>
+          <a href="#products" class="nav-link hover:text-gold transition-colors">محصولات</a>
+          <a href="#categories" class="nav-link hover:text-gold transition-colors">دسته‌بندی‌ها</a>
+          <a href="#showroom" class="nav-link hover:text-gold transition-colors">نمایشگاه</a>
+          <a href="#blog" class="nav-link hover:text-gold transition-colors">مجله</a>
+          <a href="#" class="nav-link hover:text-gold transition-colors">تماس با ما</a>
+        </nav>
+
+        <!-- آیکون‌ها -->
+        <div class="flex items-center gap-3 lg:gap-5">
+          <button class="hidden sm:block p-2 hover:text-gold transition-colors" aria-label="جستجو">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+          </button>
+          <button class="p-2 hover:text-gold transition-colors" aria-label="علاقه‌مندی‌ها">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>
+          </button>
+          <button class="relative p-2 hover:text-gold transition-colors" aria-label="سبد خرید">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+            </svg>
+            <span class="absolute -top-0.5 -left-0.5 w-4 h-4 bg-gold text-white text-[10px] font-bold rounded-full flex items-center justify-center">۲</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- منوی موبایل -->
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-cream-200 bg-cream-50">
+      <nav class="flex flex-col px-4 py-4 gap-3 text-sm font-medium">
+        <a href="#" class="py-2 hover:text-gold transition-colors">خانه</a>
+        <a href="#products" class="py-2 hover:text-gold transition-colors">محصولات</a>
+        <a href="#categories" class="py-2 hover:text-gold transition-colors">دسته‌بندی‌ها</a>
+        <a href="#showroom" class="py-2 hover:text-gold transition-colors">نمایشگاه</a>
+        <a href="#blog" class="py-2 hover:text-gold transition-colors">مجله</a>
+        <a href="#" class="py-2 hover:text-gold transition-colors">تماس با ما</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- هیرو -->
+    <section class="hero-gradient relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-28">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div class="order-2 lg:order-1">
+            <span class="inline-block text-xs font-semibold tracking-widest text-gold uppercase mb-4">بهار ۱۴۰۵ — ۱۴۰۶</span>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+              مجموعه<br />
+              <span class="text-gold">خانه دلنشین</span>
+            </h1>
+            <p class="text-stone-750/80 text-lg leading-relaxed mb-8 max-w-lg">
+              طراحی معاصر، متناسب با نیازهای خانه‌ای که به جزئیات اهمیت می‌دهید. مبلمان و دکوراسیونی که فضای شما را متحول می‌کند.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a href="#products" class="inline-flex items-center gap-2 bg-stone-850 text-cream-50 px-8 py-3.5 text-sm font-semibold hover:bg-stone-750 transition-colors">
+                شروع خرید
+                <svg class="w-4 h-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+              </a>
+              <a href="#showroom" class="inline-flex items-center gap-2 border border-stone-850/20 px-8 py-3.5 text-sm font-semibold hover:border-gold hover:text-gold transition-colors">
+                بازدید از نمایشگاه
+              </a>
+            </div>
+          </div>
+          <div class="order-1 lg:order-2 relative">
+            <div class="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl shadow-stone-850/10">
+              <img
+                src="https://images.unsplash.com/photo-1618221197210-5fe63e6c3ad1?w=800&q=80"
+                alt="اتاق نشیمن مدرن با مبلمان طراح"
+                class="w-full h-full object-cover"
+                loading="eager"
+              />
+            </div>
+            <div class="absolute -bottom-6 -right-6 bg-white rounded-xl shadow-lg p-5 hidden sm:block">
+              <p class="text-xs text-stone-750/60 mb-1">محصول ویژه هفته</p>
+              <p class="font-semibold text-sm">صندلی راحتی مدل آرام</p>
+              <p class="text-gold font-bold mt-1">از ۱۲,۵۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ویژگی‌ها -->
+    <section class="border-y border-cream-200 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid sm:grid-cols-3 gap-8 lg:gap-12">
+          <div class="flex flex-col items-center text-center sm:items-start sm:text-right">
+            <div class="w-12 h-12 rounded-full bg-cream-100 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+              </svg>
+            </div>
+            <h3 class="font-bold text-base mb-2">کیفیت ساخت بی‌نظیر</h3>
+            <p class="text-sm text-stone-750/70 leading-relaxed">مواد اولیه ممتاز و دوام ماندگار برای سال‌ها استفاده</p>
+          </div>
+          <div class="flex flex-col items-center text-center sm:items-start sm:text-right">
+            <div class="w-12 h-12 rounded-full bg-cream-100 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+              </svg>
+            </div>
+            <h3 class="font-bold text-base mb-2">پرداخت امن</h3>
+            <p class="text-sm text-stone-750/70 leading-relaxed">تراکنش‌های رمزنگاری‌شده با تمام درگاه‌های معتبر</p>
+          </div>
+          <div class="flex flex-col items-center text-center sm:items-start sm:text-right">
+            <div class="w-12 h-12 rounded-full bg-cream-100 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/>
+              </svg>
+            </div>
+            <h3 class="font-bold text-base mb-2">ارسال سراسر کشور</h3>
+            <p class="text-sm text-stone-750/70 leading-relaxed">تحویل ۲ تا ۵ روز کاری در سراسر ایران*</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- دسته‌بندی‌های محبوب -->
+    <section id="categories" class="py-16 lg:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-end justify-between mb-10">
+          <div>
+            <h2 class="text-2xl lg:text-3xl font-bold mb-2">دسته‌بندی‌های محبوب</h2>
+            <p class="text-stone-750/70 text-sm">هر آنچه برای خانه‌ای زیبا نیاز دارید</p>
+          </div>
+          <a href="#" class="hidden sm:inline-flex text-sm font-medium text-gold hover:text-gold-dark transition-colors">
+            مشاهده همه ←
+          </a>
+        </div>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+          <a href="#" class="group relative aspect-[3/4] rounded-xl overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1555041469-a586c12e9bc0?w=500&q=80" alt="مبلمان نشیمن" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-stone-850/70 to-transparent"></div>
+            <span class="absolute bottom-4 right-4 text-white font-semibold text-sm lg:text-base">مبلمان نشیمن</span>
+          </a>
+          <a href="#" class="group relative aspect-[3/4] rounded-xl overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1615066390971-03e4e1c36ddf?w=500&q=80" alt="صندلی غذاخوری" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-stone-850/70 to-transparent"></div>
+            <span class="absolute bottom-4 right-4 text-white font-semibold text-sm lg:text-base">صندلی غذاخوری</span>
+          </a>
+          <a href="#" class="group relative aspect-[3/4] rounded-xl overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=500&q=80" alt="روشنایی" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-stone-850/70 to-transparent"></div>
+            <span class="absolute bottom-4 right-4 text-white font-semibold text-sm lg:text-base">روشنایی و چراغ</span>
+          </a>
+          <a href="#" class="group relative aspect-[3/4] rounded-xl overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1631889992176-5e539b854de2?w=500&q=80" alt="دکوراسیون" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-stone-850/70 to-transparent"></div>
+            <span class="absolute bottom-4 right-4 text-white font-semibold text-sm lg:text-base">دکوراسیون</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- نمایشگاه -->
+    <section id="showroom" class="bg-stone-850 text-cream-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&q=80" alt="نمایشگاه طراحی داخلی" class="w-full h-full object-cover" loading="lazy" />
+            <span class="absolute top-4 right-4 bg-gold text-white text-xs font-bold px-3 py-1 rounded-full">نمایشگاه جدید</span>
+          </div>
+          <div>
+            <span class="text-gold text-sm font-semibold tracking-widest uppercase">نمایشگاه جدید</span>
+            <h2 class="text-3xl lg:text-4xl font-bold mt-3 mb-6 leading-tight">
+              درون استودیو:<br />نمایشگاه طراحی جدید ما
+            </h2>
+            <p class="text-cream-200/80 leading-relaxed mb-8">
+              نمایشگاه ما را ببینید، چوب طبیعی را لمس کنید، انحنای ارگونومیک صندلی‌ها را امتحان کنید و با تیم ما درباره خلق فضایی منسجم برای خانه‌تان مشورت کنید.
+            </p>
+            <a href="#" class="inline-flex items-center gap-2 bg-gold hover:bg-gold-dark text-white px-8 py-3.5 text-sm font-semibold transition-colors">
+              رزرو مشاوره رایگان
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- محصولات جدید -->
+    <section id="products" class="py-16 lg:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-2xl lg:text-3xl font-bold mb-2">محصولات جدید</h2>
+          <p class="text-stone-750/70 text-sm">تازه‌ترین افزوده‌ها به مجموعه ما</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+
+          <!-- محصول ۱ -->
+          <article class="product-card group">
+            <div class="relative aspect-square rounded-xl overflow-hidden bg-cream-100 mb-4">
+              <img src="https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=600&q=80" alt="صندلی مدل آرام AA51" class="product-image w-full h-full object-cover" loading="lazy" />
+              <button class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur text-sm font-semibold py-2.5 rounded-lg opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 hover:bg-stone-850 hover:text-white">
+                انتخاب گزینه‌ها
+              </button>
+            </div>
+            <p class="text-xs text-stone-750/50 mb-1">صندلی ناهارخوری</p>
+            <h3 class="font-semibold mb-1 group-hover:text-gold transition-colors">صندلی مدل آرام AA51</h3>
+            <div class="flex items-center gap-1 mb-2">
+              <span class="star-rating text-xs">★★★★½</span>
+              <span class="text-xs text-stone-750/50">(۴.۵)</span>
+            </div>
+            <p class="font-bold text-gold">۱۲,۵۰۰,۰۰۰ تومان</p>
+          </article>
+
+          <!-- محصول ۲ -->
+          <article class="product-card group">
+            <div class="relative aspect-square rounded-xl overflow-hidden bg-cream-100 mb-4">
+              <span class="absolute top-3 right-3 bg-red-600 text-white text-xs font-bold px-2.5 py-1 rounded z-10">حراج</span>
+              <img src="https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w=600&q=80" alt="صندلی بار فلزی ۶۵" class="product-image w-full h-full object-cover" loading="lazy" />
+              <button class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur text-sm font-semibold py-2.5 rounded-lg opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 hover:bg-stone-850 hover:text-white">
+                انتخاب گزینه‌ها
+              </button>
+            </div>
+            <p class="text-xs text-stone-750/50 mb-1">صندلی بار و کانتر</p>
+            <h3 class="font-semibold mb-1 group-hover:text-gold transition-colors">صندلی بار فلزی ۶۵</h3>
+            <div class="flex items-center gap-1 mb-2">
+              <span class="star-rating text-xs">★★★★★</span>
+              <span class="text-xs text-stone-750/50">(۵)</span>
+            </div>
+            <p class="font-bold text-gold">۸,۹۰۰,۰۰۰ تومان</p>
+          </article>
+
+          <!-- محصول ۳ -->
+          <article class="product-card group">
+            <div class="relative aspect-square rounded-xl overflow-hidden bg-cream-100 mb-4">
+              <img src="https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=600&q=80" alt="آویز نوری حبابی" class="product-image w-full h-full object-cover" loading="lazy" />
+              <button class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur text-sm font-semibold py-2.5 rounded-lg opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 hover:bg-stone-850 hover:text-white">
+                انتخاب گزینه‌ها
+              </button>
+            </div>
+            <p class="text-xs text-stone-750/50 mb-1">روشنایی آویز</p>
+            <h3 class="font-semibold mb-1 group-hover:text-gold transition-colors">آویز نوری حبابی نلسون</h3>
+            <div class="flex items-center gap-1 mb-2">
+              <span class="star-rating text-xs">★★★★★</span>
+              <span class="text-xs text-stone-750/50">(۵)</span>
+            </div>
+            <p class="font-bold text-gold">۲۶,۷۰۰,۰۰۰ تومان</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- مجموعه منتخب -->
+    <section class="py-16 lg:py-24 bg-white border-y border-cream-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-2xl lg:text-3xl font-bold mb-2">مجموعه منتخب</h2>
+          <p class="text-stone-750/70 text-sm">انتخاب‌های ویژه تیم طراحی ما</p>
+        </div>
+        <div class="grid grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-6">
+
+          <article class="product-card group">
+            <div class="relative aspect-[3/4] rounded-xl overflow-hidden bg-cream-100 mb-3">
+              <span class="absolute top-2 right-2 bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded z-10">حراج</span>
+              <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=400&q=80" alt="صندلی راحتی بلوط" class="product-image w-full h-full object-cover" loading="lazy" />
+            </div>
+            <h3 class="text-sm font-semibold group-hover:text-gold transition-colors">صندلی راحتی بلوط</h3>
+            <p class="text-xs text-gold font-bold mt-1">۱۵,۲۰۰,۰۰۰ تومان</p>
+          </article>
+
+          <article class="product-card group">
+            <div class="relative aspect-[3/4] rounded-xl overflow-hidden bg-cream-100 mb-3">
+              <span class="absolute top-2 right-2 bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded z-10">حراج</span>
+              <img src="https://images.unsplash.com/photo-1524484485831-a92ffc458dea?w=400&q=80" alt="چراغ آویز رایم" class="product-image w-full h-full object-cover" loading="lazy" />
+            </div>
+            <h3 class="text-sm font-semibold group-hover:text-gold transition-colors">چراغ آویز رایم</h3>
+            <p class="text-xs text-gold font-bold mt-1">۹,۸۰۰,۰۰۰ تومان</p>
+          </article>
+
+          <article class="product-card group">
+            <div class="relative aspect-[3/4] rounded-xl overflow-hidden bg-cream-100 mb-3">
+              <img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=400&q=80" alt="صندلی مدل A132" class="product-image w-full h-full object-cover" loading="lazy" />
+            </div>
+            <h3 class="text-sm font-semibold group-hover:text-gold transition-colors">صندلی مدل A132</h3>
+            <p class="text-xs text-gold font-bold mt-1">۱۲,۵۰۰,۰۰۰ تومان</p>
+          </article>
+
+          <article class="product-card group">
+            <div class="relative aspect-[3/4] rounded-xl overflow-hidden bg-cream-100 mb-3">
+              <img src="https://images.unsplash.com/photo-1540932239988-3012c91004d4?w=400&q=80" alt="چراغ آویز دانه" class="product-image w-full h-full object-cover" loading="lazy" />
+            </div>
+            <h3 class="text-sm font-semibold group-hover:text-gold transition-colors">چراغ آویز دانه</h3>
+            <p class="text-xs text-gold font-bold mt-1">۹,۰۰۰,۰۰۰ تومان</p>
+          </article>
+
+          <article class="product-card group col-span-2 lg:col-span-1">
+            <div class="relative aspect-[3/4] rounded-xl overflow-hidden bg-cream-100 mb-3">
+              <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=400&q=80" alt="صندلی فلزی فرم" class="product-image w-full h-full object-cover" loading="lazy" />
+            </div>
+            <h3 class="text-sm font-semibold group-hover:text-gold transition-colors">صندلی فلزی فرم</h3>
+            <p class="text-xs text-gold font-bold mt-1">۱۳,۴۰۰,۰۰۰ تومان</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- نظرات مشتریان -->
+    <section class="py-16 lg:py-20 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-3 gap-6">
+          <blockquote class="bg-cream-100 rounded-2xl p-8">
+            <div class="flex items-center gap-1 mb-4 star-rating text-sm">★★★★★</div>
+            <p class="text-sm leading-relaxed text-stone-750/80 mb-6">
+              «طراحی ساده و ظریف یک شاهکار مطلق است — اتاق را کاملاً متعادل می‌کند. کیفیت ساخت فوق‌العاده و تجربه خریدی واقعاً حرفه‌ای.»
+            </p>
+            <footer class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center text-gold font-bold text-sm">س.م</div>
+              <div>
+                <p class="text-sm font-semibold">سارا محمدی</p>
+                <p class="text-xs text-stone-750/50">طراح داخلی</p>
+              </div>
+            </footer>
+          </blockquote>
+          <blockquote class="bg-cream-100 rounded-2xl p-8">
+            <div class="flex items-center gap-1 mb-4 star-rating text-sm">★★★★★</div>
+            <p class="text-sm leading-relaxed text-stone-750/80 mb-6">
+              «از لحظه ورود به نمایشگاه تا تحویل محصول، همه چیز بی‌نقص بود. تیم مشاوره فوق‌العاده حرفه‌ای و دقیق عمل کردند.»
+            </p>
+            <footer class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center text-gold font-bold text-sm">ع.ر</div>
+              <div>
+                <p class="text-sm font-semibold">علی رضایی</p>
+                <p class="text-xs text-stone-750/50">معمار</p>
+              </div>
+            </footer>
+          </blockquote>
+          <blockquote class="bg-cream-100 rounded-2xl p-8">
+            <div class="flex items-center gap-1 mb-4 star-rating text-sm">★★★★★</div>
+            <p class="text-sm leading-relaxed text-stone-750/80 mb-6">
+              «کیفیت پارچه و دوخت بی‌نظیر است. صندلی‌ها بعد از یک سال استفاده روزانه هنوز مثل روز اول هستند.»
+            </p>
+            <footer class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center text-gold font-bold text-sm">ن.ک</div>
+              <div>
+                <p class="text-sm font-semibold">نیلوفر کریمی</p>
+                <p class="text-xs text-stone-750/50">خریدار</p>
+              </div>
+            </footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- برندها -->
+    <section class="border-y border-cream-200 py-8 overflow-hidden">
+      <div class="relative">
+        <div class="flex whitespace-nowrap">
+          <div class="marquee-track flex items-center gap-12 text-sm font-medium text-stone-750/40 uppercase tracking-widest">
+            <span>هی ✦</span><span>موتو ✦</span><span>ترادیشن ✦</span><span>بلوموس ✦</span><span>کوو ✦</span><span>اوا سولو ✦</span><span>کاسینا ✦</span><span>آدیا ✦</span><span>هی ✦</span><span>موتو ✦</span><span>ترادیشن ✦</span><span>بلوموس ✦</span><span>کوو ✦</span><span>اوا سولو ✦</span><span>کاسینا ✦</span><span>آدیا ✦</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- مجله -->
+    <section id="blog" class="py-16 lg:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-end justify-between mb-10">
+          <div>
+            <h2 class="text-2xl lg:text-3xl font-bold mb-2">نگاهی به خانه‌ای منتخب</h2>
+            <p class="text-stone-750/70 text-sm">مقالات و الهام برای دکوراسیون شما</p>
+          </div>
+          <a href="#" class="hidden sm:inline-flex text-sm font-medium text-gold hover:text-gold-dark transition-colors">همه مقالات ←</a>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+          <article class="group">
+            <div class="aspect-[4/3] rounded-xl overflow-hidden mb-4">
+              <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=500&q=80" alt="هنر کمتر" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+            </div>
+            <div class="flex items-center gap-2 text-xs text-stone-750/50 mb-2">
+              <span>نویسنده: تیم تحریریه</span>
+              <span>·</span>
+              <span>۴ دقیقه مطالعه</span>
+            </div>
+            <h3 class="font-semibold text-sm leading-relaxed group-hover:text-gold transition-colors">هنر کمتر: زیبایی در طراحی معماری مینیمال</h3>
+            <span class="inline-block mt-3 text-xs bg-cream-200 text-stone-750/70 px-2.5 py-1 rounded">طراحی داخلی</span>
+          </article>
+
+          <article class="group">
+            <div class="aspect-[4/3] rounded-xl overflow-hidden mb-4">
+              <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=500&q=80" alt="نقشه فردا" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+            </div>
+            <div class="flex items-center gap-2 text-xs text-stone-750/50 mb-2">
+              <span>نویسنده: تیم تحریریه</span>
+              <span>·</span>
+              <span>۵ دقیقه مطالعه</span>
+            </div>
+            <h3 class="font-semibold text-sm leading-relaxed group-hover:text-gold transition-colors">نقشه فردا: معماری فراتر از اصول پایه</h3>
+            <span class="inline-block mt-3 text-xs bg-cream-200 text-stone-750/70 px-2.5 py-1 rounded">معماری</span>
+          </article>
+
+          <article class="group">
+            <div class="aspect-[4/3] rounded-xl overflow-hidden mb-4">
+              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&q=80" alt="نیروی نادیده" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+            </div>
+            <div class="flex items-center gap-2 text-xs text-stone-750/50 mb-2">
+              <span>نویسنده: تیم تحریریه</span>
+              <span>·</span>
+              <span>۶ دقیقه مطالعه</span>
+            </div>
+            <h3 class="font-semibold text-sm leading-relaxed group-hover:text-gold transition-colors">نیروی نادیده: چگونه نور و سایه طراحی را شکل می‌دهند</h3>
+            <span class="inline-block mt-3 text-xs bg-cream-200 text-stone-750/70 px-2.5 py-1 rounded">نورپردازی</span>
+          </article>
+
+          <article class="group">
+            <div class="aspect-[4/3] rounded-xl overflow-hidden mb-4">
+              <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=500&q=80" alt="تکامل طراحی" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+            </div>
+            <div class="flex items-center gap-2 text-xs text-stone-750/50 mb-2">
+              <span>نویسنده: تیم تحریریه</span>
+              <span>·</span>
+              <span>۴ دقیقه مطالعه</span>
+            </div>
+            <h3 class="font-semibold text-sm leading-relaxed group-hover:text-gold transition-colors">از خانه ساده تا نماد معماری: تکامل طراحی</h3>
+            <span class="inline-block mt-3 text-xs bg-cream-200 text-stone-750/70 px-2.5 py-1 rounded">تاریخ معماری</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA دوگانه -->
+    <section class="grid md:grid-cols-2">
+      <div class="relative aspect-[16/10] md:aspect-auto md:min-h-[400px] overflow-hidden group">
+        <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=800&q=80" alt="فضاهای فیزیکی" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+        <div class="absolute inset-0 bg-stone-850/50"></div>
+        <div class="relative z-10 flex flex-col justify-end h-full p-8 lg:p-12 text-white">
+          <span class="text-gold text-sm font-semibold mb-2">الهام</span>
+          <h3 class="text-2xl lg:text-3xl font-bold mb-3">فضاهای فیزیکی ما را ببینید</h3>
+          <p class="text-white/80 text-sm mb-6 max-w-sm">محیطی مینیمال که فضایی برای آرامش ذهن در میان نور نرم و بافت‌های هدفمند ایجاد می‌کند.</p>
+          <a href="#" class="inline-flex self-start border border-white/60 hover:bg-white hover:text-stone-850 px-6 py-2.5 text-sm font-semibold transition-colors">یافتن نزدیک‌ترین شعبه</a>
+        </div>
+      </div>
+      <div class="relative aspect-[16/10] md:aspect-auto md:min-h-[400px] overflow-hidden group">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" alt="فرصت‌های شغلی" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+        <div class="absolute inset-0 bg-stone-850/50"></div>
+        <div class="relative z-10 flex flex-col justify-end h-full p-8 lg:p-12 text-white">
+          <span class="text-gold text-sm font-semibold mb-2">فرصت‌های شغلی</span>
+          <h3 class="text-2xl lg:text-3xl font-bold mb-3">نگاه پایدار ما به آینده</h3>
+          <p class="text-white/80 text-sm mb-6 max-w-sm">همیشه مشتاق شنیدن از افراد خلاق و بااستعدادی هستیم که دیدگاه تازه‌ای به تیم ما اضافه کنند.</p>
+          <a href="#" class="inline-flex self-start border border-white/60 hover:bg-white hover:text-stone-850 px-6 py-2.5 text-sm font-semibold transition-colors">مشاهده فرصت‌ها</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- خبرنامه -->
+    <section class="py-16 lg:py-20 bg-cream-100">
+      <div class="max-w-xl mx-auto px-4 sm:px-6 text-center">
+        <h2 class="text-2xl lg:text-3xl font-bold mb-3">در جریان باشید</h2>
+        <p class="text-stone-750/70 text-sm mb-8 leading-relaxed">
+          در خبرنامه ما عضو شوید تا از جدیدترین طراحی‌ها، رویدادهای محلی، کمپین‌ها و پیشنهادهای ویژه باخبر شوید.
+        </p>
+        <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3">
+          <input type="text" placeholder="نام شما" required class="flex-1 px-4 py-3 rounded-lg border border-cream-300 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-gold/40 focus:border-gold" />
+          <input type="email" placeholder="آدرس ایمیل" required class="flex-1 px-4 py-3 rounded-lg border border-cream-300 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-gold/40 focus:border-gold" />
+          <button type="submit" class="bg-stone-850 text-white px-8 py-3 rounded-lg text-sm font-semibold hover:bg-stone-750 transition-colors whitespace-nowrap">
+            عضویت
+          </button>
+        </form>
+        <label class="flex items-start gap-2 mt-4 text-xs text-stone-750/50 justify-center cursor-pointer">
+          <input type="checkbox" required class="mt-0.5 rounded" />
+          <span>موافقم داده‌هایم برای ارسال خبرنامه پردازش و استفاده شود.</span>
+        </label>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- فوتر -->
+  <footer class="bg-stone-850 text-cream-200">
+    <div class="border-b border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center sm:text-right">
+          <div>
+            <h4 class="text-white font-semibold text-sm mb-2">ارسال رایگان</h4>
+            <p class="text-xs text-cream-200/60">برای سفارش‌های بالای ۵ میلیون تومان*</p>
+          </div>
+          <div>
+            <h4 class="text-white font-semibold text-sm mb-2">عضویت انحصاری</h4>
+            <p class="text-xs text-cream-200/60">اخبار و پیشنهادهای ویژه</p>
+          </div>
+          <div>
+            <h4 class="text-white font-semibold text-sm mb-2">پشتیبانی</h4>
+            <p class="text-xs text-cream-200/60">تماس: ۰۲۱-۸۸۷۷۶۶۵۵</p>
+          </div>
+          <div>
+            <h4 class="text-white font-semibold text-sm mb-2">تحویل سریع</h4>
+            <p class="text-xs text-cream-200/60">۲ تا ۵ روز کاری در سراسر کشور*</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div>
+          <a href="#" class="text-xl font-bold text-white">
+            خانه<span class="text-gold">دلنشین</span>
+          </a>
+          <p class="text-xs text-cream-200/60 mt-4 leading-relaxed">
+            تهران، خیابان ولیعصر، پلاک ۱۲۳۴<br />
+            info@khane-delneshin.ir<br />
+            تلفن: ۰۲۱-۸۸۷۷۶۶۵۵
+          </p>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold text-sm mb-4">فروشگاه</h4>
+          <ul class="space-y-2 text-xs text-cream-200/60">
+            <li><a href="#" class="hover:text-gold transition-colors">همه محصولات</a></li>
+            <li><a href="#" class="hover:text-gold transition-colors">محصولات جدید</a></li>
+            <li><a href="#" class="hover:text-gold transition-colors">حراج و تخفیف</a></li>
+            <li><a href="#" class="hover:text-gold transition-colors">برندها</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold text-sm mb-4">درباره ما</h4>
+          <ul class="space-y-2 text-xs text-cream-200/60">
+            <li><a href="#" class="hover:text-gold transition-colors">داستان ما</a></li>
+            <li><a href="#" class="hover:text-gold transition-colors">نمایشگاه</a></li>
+            <li><a href="#" class="hover:text-gold transition-colors">فرصت‌های شغلی</a></li>
+            <li><a href="#" class="hover:text-gold transition-colors">تماس با ما</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold text-sm mb-4">پشتیبانی</h4>
+          <ul class="space-y-2 text-xs text-cream-200/60">
+            <li><a href="#" class="hover:text-gold transition-colors">سوالات متداول</a></li>
+            <li><a href="#" class="hover:text-gold transition-colors">شرایط ارسال</a></li>
+            <li><a href="#" class="hover:text-gold transition-colors">بازگشت کالا</a></li>
+            <li><a href="#" class="hover:text-gold transition-colors">حریم خصوصی</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-cream-200/40">
+        <p>© ۱۴۰۵ خانه دلنشین. تمامی حقوق محفوظ است.</p>
+        <p>این وب‌سایت از کوکی‌ها استفاده می‌کند. <a href="#" class="underline hover:text-gold transition-colors">سیاست کوکی</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
