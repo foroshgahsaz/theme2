@@ -1,0 +1,404 @@
+/* Foton App Landing Home – Theme2 Custom Styles */
+
+:root {
+  --foton-purple: #58468c;
+  --foton-coral: #ff8a73;
+  --foton-blue: #7aa0ff;
+  --foton-gray: #716c80;
+  --foton-dark: #131217;
+  --foton-dark2: #292A33;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--foton-dark);
+}
+
+/* Background */
+.vs-holder {
+  background-image: url('https://foton.qodeinteractive.com/wp-content/plugins/foton-core/assets/img/app-background.jpg');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Curved Stripe */
+.vs-stripe {
+  top: 50%;
+  left: auto;
+  right: 0;
+  width: 144vw;
+  height: 186%;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transform-origin: 50% 0;
+  transform: rotate(-30deg);
+  transition: top 1.2s 0.3s cubic-bezier(1, 0.12, 0.25, 1),
+              transform 1.2s 0.3s cubic-bezier(1, 0.12, 0.25, 1);
+  z-index: 1;
+}
+
+.vertical-showcase.ready .vs-stripe {
+  top: -100% !important;
+}
+
+.vertical-showcase.last-slide .vs-stripe {
+  top: -50% !important;
+  height: 500% !important;
+  transform: matrix(1, 0, 0, 1, 0, 0) !important;
+}
+
+@media screen and (max-width: 1280px) {
+  .vs-stripe { width: 172vw; }
+}
+
+@media screen and (max-width: 768px) {
+  .vs-stripe { width: 255vw; }
+}
+
+/* Phone Frame */
+.vs-frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 1.2s 0.3s cubic-bezier(1, 0.12, 0.25, 1);
+}
+
+.vs-frame-mobile {
+  position: relative;
+}
+
+.vertical-showcase.ready .vs-frame {
+  transform: translate(-50%, 50%);
+}
+
+.vertical-showcase.last-slide .vs-frame {
+  transform: translate(-50%, -200%) !important;
+}
+
+.vs-inner-frame {
+  width: 51.2%;
+  height: 67%;
+  margin: 24% 0 0 25.7%;
+  z-index: -23;
+}
+
+#screen-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+#screen-container img.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+#screen-container img.prev-active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Frame Info Positions */
+.frame-info-top {
+  transform: translate(-19.5vw, -12vh);
+  width: 350px;
+  left: 37.6%;
+  transition: opacity 0.3s cubic-bezier(1, 0.12, 0.25, 1);
+}
+
+.frame-icon {
+  top: -10%;
+  left: -28%;
+  transition: 0.5s 0.2s cubic-bezier(0.61, 0.07, 0.25, 1);
+}
+
+.frame-title {
+  transition: 0.5s 0.1s cubic-bezier(0.61, 0.07, 0.25, 1);
+}
+
+.frame-subtitle {
+  transition: 0.5s 0.15s cubic-bezier(0.61, 0.07, 0.25, 1);
+}
+
+.frame-info-bottom {
+  transform: translate(-19.5vw, 16vh);
+  width: 350px;
+  left: 37.6%;
+  color: #fff;
+}
+
+.frame-slide-number {
+  top: 13%;
+  left: -25%;
+  transition: 0.5s 0.1s cubic-bezier(0.61, 0.07, 0.25, 1);
+}
+
+.frame-slide-text {
+  transition: 0.5s cubic-bezier(0.61, 0.07, 0.25, 1);
+}
+
+.frame-bg-text {
+  left: 50%;
+  transform: translate(-50%, 0);
+  margin-left: 60%;
+  top: -20%;
+}
+
+#bg-text-content {
+  opacity: 0;
+  transform: translate(-50%, 20px);
+  transition: 1s cubic-bezier(0.18, 0.12, 0, 0.93);
+}
+
+.vertical-showcase.ready #bg-text-content {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.frame-info-other {
+  transform: translate(-50%, -5.5vh);
+  transition: 0.5s cubic-bezier(0.61, 0.07, 0.25, 1);
+}
+
+.frame-info-other a {
+  transition: 0.5s cubic-bezier(0.61, 0.07, 0.25, 1);
+}
+
+.frame-info-other a img {
+  transition: 0.3s;
+}
+
+.frame-info-other a:hover img {
+  opacity: 0.8;
+}
+
+/* Animate out on slide change */
+.frame-info.animating-out .frame-title,
+.frame-info.animating-out .frame-icon {
+  transform: translateX(-100px);
+  opacity: 0;
+}
+
+.frame-info.animating-out .frame-subtitle {
+  transform: translateX(-50px);
+  opacity: 0;
+}
+
+.frame-info.animating-out .frame-slide-text,
+.frame-info.animating-out .frame-slide-number {
+  transform: translateX(-50px);
+  opacity: 0;
+}
+
+.frame-info.animating-out .frame-info-other a {
+  transform: translateY(-100px);
+  opacity: 0;
+}
+
+/* Last slide – hide frame info */
+.vertical-showcase.last-slide .frame-info {
+  z-index: -1;
+}
+
+.vertical-showcase.last-slide .frame-info-top .frame-icon,
+.vertical-showcase.last-slide .frame-info-top .frame-title,
+.vertical-showcase.last-slide .frame-info-top .frame-subtitle,
+.vertical-showcase.last-slide .frame-slide-text,
+.vertical-showcase.last-slide .frame-slide-number,
+.vertical-showcase.last-slide .frame-info-other a {
+  transform: translateX(-100px);
+  opacity: 0;
+}
+
+/* Contact Form */
+.contact-form {
+  background-image: url('https://foton.qodeinteractive.com/wp-content/plugins/foton-core/assets/img/app-landing-home-contact-background.jpg');
+  background-position: center 100%;
+  background-size: cover;
+  transform: translateY(120%);
+  transition: transform 1.2s 0.3s cubic-bezier(1, 0.12, 0.25, 1);
+}
+
+.vertical-showcase.last-slide .contact-form {
+  transform: translateY(0);
+}
+
+/* Swiper */
+.vs-swiper {
+  height: 100vh;
+}
+
+.vs-swiper .swiper-slide {
+  height: 100vh;
+}
+
+.vs-pagination {
+  position: absolute !important;
+  right: 45px !important;
+  left: auto !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: auto !important;
+  padding-top: 24px;
+  padding-left: 5px;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vs-pagination .swiper-pagination-bullet {
+  display: block;
+  width: 10px;
+  height: 10px;
+  background: var(--foton-blue);
+  margin: 0 0 20px 0 !important;
+  opacity: 1;
+  border-radius: 50%;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.vs-pagination .swiper-pagination-bullet-active {
+  background: var(--foton-coral);
+}
+
+/* Fullscreen Menu */
+.fullscreen-menu.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.menu-btn.is-open .menu-icon-open {
+  opacity: 0;
+}
+
+.menu-btn.is-open .menu-icon-close {
+  opacity: 1;
+}
+
+.menu-item.has-sub .sub-menu.is-open {
+  display: block;
+}
+
+/* Side Panel (slides from right) */
+.side-panel.is-open {
+  transform: translateX(0) !important;
+}
+
+#side-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Back to Top */
+#back-to-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Responsive */
+@media screen and (max-width: 1600px) {
+  .frame-info-bottom {
+    transform: translate(-19.5vw, 18vh);
+  }
+  .frame-slide-text {
+    font-size: 39px !important;
+  }
+  .frame-bg-text {
+    font-size: 210px;
+    margin-left: 92%;
+    top: -8%;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .frame-info-top {
+    transform: translate(1vh, -29vh);
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .frame-info-top {
+    transform: translate(0vh, -29vh);
+  }
+  .contact-form {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    border-radius: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .frame-info-bottom {
+    transform: translate(2vh, 26vh);
+  }
+  .frame-bg-text {
+    font-size: 200px;
+    margin-left: 82%;
+    top: -8%;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .frame-info-bottom {
+    transform: translate(0vh, 24vh);
+  }
+  .frame-slide-text {
+    font-size: 32px !important;
+  }
+  .frame-info-other {
+    width: 500px;
+    text-align: center;
+  }
+  .contact-form {
+    padding: 5vh 16vw;
+  }
+  .vs-pagination {
+    right: 20px !important;
+  }
+}
+
+@media screen and (max-width: 1366px) and (min-width: 1025px) {
+  .contact-form .contact-form-info {
+    margin: -3vh 0 5vh !important;
+  }
+}
+
+/* Logo initial hidden animation */
+header img {
+  opacity: 0;
+  animation: logoFadeIn 0.8s 0.5s forwards;
+}
+
+@keyframes logoFadeIn {
+  to { opacity: 1; }
+}
+
+/* Initial load state */
+.vertical-showcase:not(.ready) .frame-info-top,
+.vertical-showcase:not(.ready) .frame-info-bottom,
+.vertical-showcase:not(.ready) .frame-info-other {
+  opacity: 0;
+}
+
+.vertical-showcase.ready .frame-info-top,
+.vertical-showcase.ready .frame-info-bottom,
+.vertical-showcase.ready .frame-info-other {
+  opacity: 1;
+  transition: opacity 0.5s 0.8s;
+}
