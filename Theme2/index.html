@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Landing Home – Foton</title>
+  <link rel="icon" href="https://foton.qodeinteractive.com/wp-content/uploads/2018/06/cropped-favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;700&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            foton: {
+              purple: '#58468c',
+              coral: '#ff8a73',
+              blue: '#7aa0ff',
+              gray: '#716c80',
+              dark: '#131217',
+              dark2: '#292A33',
+              input: '#f5f6ff',
+            }
+          },
+          fontFamily: {
+            poppins: ['Poppins', 'sans-serif'],
+            nunito: ['Nunito', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body class="font-nunito text-white overflow-hidden">
+
+  <!-- Side Panel -->
+  <aside id="side-panel" class="side-panel fixed top-0 right-0 h-full w-[340px] z-[10001] translate-x-full transition-transform duration-500 ease-out bg-white overflow-y-auto">
+    <button id="side-close" class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center text-foton-blue hover:text-foton-coral transition-colors" aria-label="Close">
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="currentColor"><path d="M35,0H5C2.2,0,0,2.2,0,5v30c0,2.8,2.2,5,5,5h30c2.8,0,5-2.2,5-5V5C40,2.2,37.8,0,35,0z M27.1,25.7l-1.4,1.4 L20,21.4l-5.7,5.7l-1.4-1.4l5.7-5.7l-5.7-5.7l1.4-1.4l5.7,5.7l5.7-5.7l1.4,1.4L21.4,20L27.1,25.7z"/></svg>
+    </button>
+    <div class="p-10 pt-16">
+      <img src="https://foton.qodeinteractive.com/wp-content/uploads/2018/06/side_img1.png" alt="" class="mb-6 max-w-[200px]">
+      <h5 class="font-poppins text-lg font-medium text-foton-purple mb-4">Support &amp; Downloads</h5>
+      <p class="text-sm text-foton-gray leading-relaxed mb-8">Quisque actraqum nunc no dolor sit ametaugue dolor. Lorem ipsum dolor sit amet, consyect etur adip</p>
+      <img src="https://foton.qodeinteractive.com/wp-content/uploads/2018/06/side_img2.png" alt="" class="mb-6 max-w-[200px]">
+      <h5 class="font-poppins text-lg font-medium text-foton-purple mb-4">Contact Info</h5>
+      <div class="space-y-3 text-foton-gray text-base">
+        <div class="flex items-start gap-3"><svg class="w-4 h-4 mt-1 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><span>198 West 21th Street, Suite 721</span></div>
+        <div class="flex items-start gap-3"><svg class="w-4 h-4 mt-1 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><span>New York, NY 10010</span></div>
+        <div class="flex items-start gap-3"><svg class="w-4 h-4 mt-1 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg><span>hello@foton.com</span></div>
+        <div class="flex items-start gap-3"><svg class="w-4 h-4 mt-1 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg><span>+88 (0) 101 0000 000</span></div>
+      </div>
+      <div class="mt-12">
+        <h5 class="font-poppins text-lg font-medium text-foton-purple mb-4">Follow Us</h5>
+        <div class="flex gap-4">
+          <a href="#" class="text-foton-gray hover:text-foton-coral transition-colors text-lg"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-foton-gray hover:text-foton-coral transition-colors text-lg"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-foton-gray hover:text-foton-coral transition-colors text-lg"><i class="fab fa-google-plus-g"></i></a>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div id="side-overlay" class="fixed inset-0 bg-black/50 z-[10000] opacity-0 pointer-events-none transition-opacity duration-500"></div>
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-[9999] px-6 lg:px-12 py-5">
+    <div class="flex items-center justify-between max-w-[1800px] mx-auto">
+      <a href="#" class="block">
+        <img src="https://foton.qodeinteractive.com/wp-content/uploads/2018/07/logo2.png" alt="Foton" class="h-[26px] w-auto" width="208" height="52">
+      </a>
+      <button id="menu-btn" class="menu-btn group relative w-10 h-10 flex items-center justify-center" aria-label="Menu">
+        <span class="menu-icon-open text-white text-2xl transition-opacity"><svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg></span>
+        <span class="menu-icon-close absolute opacity-0 text-white text-2xl transition-opacity"><svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Fullscreen Menu -->
+  <nav id="fullscreen-menu" class="fullscreen-menu fixed inset-0 z-[9998] bg-foton-dark/95 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-500">
+    <ul class="text-center space-y-2">
+      <li class="menu-item has-sub">
+        <button class="menu-link font-poppins text-3xl md:text-4xl font-light text-white hover:text-foton-coral transition-colors py-2">Home</button>
+        <ul class="sub-menu hidden mt-2 space-y-1">
+          <li><a href="#" class="text-lg text-white/70 hover:text-foton-coral transition-colors">Main Home</a></li>
+          <li><a href="#" class="text-lg text-white/70 hover:text-foton-coral transition-colors">Tech Home</a></li>
+          <li><a href="#" class="text-lg text-white/70 hover:text-foton-coral transition-colors">App Presentation</a></li>
+        </ul>
+      </li>
+      <li class="menu-item has-sub">
+        <button class="menu-link font-poppins text-3xl md:text-4xl font-light text-white hover:text-foton-coral transition-colors py-2">Pages</button>
+        <ul class="sub-menu hidden mt-2 space-y-1">
+          <li><a href="#" class="text-lg text-white/70 hover:text-foton-coral transition-colors">About me</a></li>
+          <li><a href="#" class="text-lg text-white/70 hover:text-foton-coral transition-colors">About us</a></li>
+          <li><a href="#" class="text-lg text-white/70 hover:text-foton-coral transition-colors">Pricing Plans</a></li>
+        </ul>
+      </li>
+      <li class="menu-item has-sub">
+        <button class="menu-link font-poppins text-3xl md:text-4xl font-light text-white hover:text-foton-coral transition-colors py-2">Blog</button>
+        <ul class="sub-menu hidden mt-2 space-y-1">
+          <li><a href="#" class="text-lg text-white/70 hover:text-foton-coral transition-colors">Masonry</a></li>
+          <li><a href="#" class="text-lg text-white/70 hover:text-foton-coral transition-colors">Right Sidebar</a></li>
+          <li><a href="#" class="text-lg text-white/70 hover:text-foton-coral transition-colors">Blog List</a></li>
+        </ul>
+      </li>
+      <li class="menu-item has-sub">
+        <button class="menu-link font-poppins text-3xl md:text-4xl font-light text-white hover:text-foton-coral transition-colors py-2">Portfolio</button>
+        <ul class="sub-menu hidden mt-2 space-y-1">
+          <li><a href="#" class="text-lg text-white/70 hover:text-foton-coral transition-colors">Gallery</a></li>
+          <li><a href="#" class="text-lg text-white/70 hover:text-foton-coral transition-colors">Masonry</a></li>
+          <li><a href="#" class="text-lg text-white/70 hover:text-foton-coral transition-colors">Masonry Wide</a></li>
+        </ul>
+      </li>
+      <li class="menu-item has-sub">
+        <button class="menu-link font-poppins text-3xl md:text-4xl font-light text-white hover:text-foton-coral transition-colors py-2">Shop</button>
+        <ul class="sub-menu hidden mt-2 space-y-1">
+          <li><a href="#" class="text-lg text-white/70 hover:text-foton-coral transition-colors">Standard</a></li>
+          <li><a href="#" class="text-lg text-white/70 hover:text-foton-coral transition-colors">Cart</a></li>
+          <li><a href="#" class="text-lg text-white/70 hover:text-foton-coral transition-colors">Product Single</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Vertical Showcase -->
+  <main id="vertical-showcase" class="vertical-showcase h-screen overflow-hidden relative">
+    <div id="vs-holder" class="vs-holder relative h-full flex items-center justify-center overflow-hidden">
+
+      <!-- Curved Stripe -->
+      <div id="vs-stripe" class="vs-stripe absolute">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3000 3000" class="w-full h-full">
+          <defs>
+            <linearGradient id="stripeGrad" gradientUnits="userSpaceOnUse" x1="1543.491" y1="1474.8508" x2="2952.8528" y2="659.8721">
+              <stop offset="0" style="stop-color:#131217"/>
+              <stop offset="1" style="stop-color:#292A33"/>
+            </linearGradient>
+          </defs>
+          <path fill="url(#stripeGrad)" fill-rule="evenodd" clip-rule="evenodd" d="M0,3000h3000V0c0,0-540,0-570.14,0C2071,0,1861.65,130,1500.33,130C1138.55,130,929,0,569.66,0C539.99,0,0,0,0,0V3000L0,3000z"/>
+        </svg>
+      </div>
+
+      <!-- Phone Frame -->
+      <div id="vs-frame" class="vs-frame pointer-events-none z-[1534]">
+        <div class="vs-frame-mobile">
+          <img src="https://foton.qodeinteractive.com/wp-content/plugins/foton-core/assets/img/mobile-frame-shadow.png" alt="Mobile frame" class="relative z-[123] max-h-[85vh] w-auto">
+          <div id="vs-inner-frame" class="vs-inner-frame absolute left-0 top-0 overflow-hidden rounded-[2rem]">
+            <div id="screen-container" class="relative w-full h-full"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Frame Info Panel -->
+      <div id="frame-info" class="frame-info absolute inset-0 z-[1500] pointer-events-none">
+        <div id="frame-info-top" class="frame-info-top absolute">
+          <img id="frame-icon" src="https://foton.qodeinteractive.com/wp-content/uploads/2019/11/h11-img-7.png" alt="" class="frame-icon absolute w-[50px] h-[50px]">
+          <div id="frame-title" class="frame-title font-poppins text-[22px] font-medium text-foton-purple">Centralized Apps</div>
+          <div id="frame-subtitle" class="frame-subtitle font-poppins text-sm text-white/70 mt-1">Lorem ipsum dolor sit amet, percipitur sadipscing.</div>
+        </div>
+        <div id="frame-info-bottom" class="frame-info-bottom absolute text-white">
+          <div id="frame-slide-number" class="frame-slide-number absolute font-poppins text-[45px] font-light">01</div>
+          <div id="frame-slide-text" class="frame-slide-text font-poppins text-[45px] font-light leading-tight max-w-[250px]">Protecting the Data</div>
+          <div class="frame-bg-text absolute font-poppins font-bold text-[250px] leading-none text-black/37 tracking-tight whitespace-nowrap">
+            <span id="bg-text-placeholder" class="opacity-0">Greatest</span>
+            <span id="bg-text-content" class="absolute left-1/2 -translate-x-1/2 top-0">Greatest</span>
+          </div>
+        </div>
+        <div id="frame-info-other" class="frame-info-other absolute bottom-0 left-1/2 -translate-x-1/2 z-[1500] pointer-events-auto">
+          <a href="https://www.apple.com/ios/app-store/" target="_blank" class="inline-block w-[143px] h-[45px] mx-1">
+            <img src="https://foton.qodeinteractive.com/wp-content/plugins/foton-core/assets/img/android.png" alt="App Store" class="w-full h-full object-contain">
+          </a>
+          <a href="https://play.google.com/store?hl=en" target="_blank" class="inline-block w-[143px] h-[45px] mx-1">
+            <img src="https://foton.qodeinteractive.com/wp-content/plugins/foton-core/assets/img/ios.png" alt="Play Store" class="w-full h-full object-contain">
+          </a>
+        </div>
+      </div>
+
+      <!-- Swiper -->
+      <div class="swiper vs-swiper absolute inset-0 z-10">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" data-index="0"
+               data-screen="https://foton.qodeinteractive.com/wp-content/uploads/2019/12/screen-1.png"
+               data-icon="https://foton.qodeinteractive.com/wp-content/uploads/2019/11/h11-img-7.png"
+               data-slide-text="Protecting the Data"
+               data-title="Centralized Apps"
+               data-subtitle="Lorem ipsum dolor sit amet, percipitur sadipscing."
+               data-number="01">
+            <div class="h-full flex items-center justify-center"></div>
+          </div>
+          <div class="swiper-slide" data-index="1"
+               data-screen="https://foton.qodeinteractive.com/wp-content/uploads/2019/12/screen-2.png"
+               data-icon="https://foton.qodeinteractive.com/wp-content/uploads/2019/11/h11-img-8.png"
+               data-slide-text="Top Notch Features"
+               data-title="Market Analysis"
+               data-subtitle="Lorem ipsum dolor sit amet, percipitur sadipscing."
+               data-number="02">
+            <div class="h-full flex items-center justify-center"></div>
+          </div>
+          <div class="swiper-slide" data-index="2"
+               data-screen="https://foton.qodeinteractive.com/wp-content/uploads/2019/12/screen-3.png"
+               data-icon="https://foton.qodeinteractive.com/wp-content/uploads/2019/11/h11-img-9.png"
+               data-slide-text="Managing Toolset"
+               data-title="Web Solution"
+               data-subtitle="Lorem ipsum dolor sit amet, percipitur sadipscing."
+               data-number="03">
+            <div class="h-full flex items-center justify-center"></div>
+          </div>
+          <div class="swiper-slide contact-slide" data-index="3">
+            <div class="h-full flex items-center justify-center p-4 md:p-8">
+              <div id="contact-form" class="contact-form w-[90%] max-w-[1300px] max-h-[73vh] bg-white rounded-3xl p-[6vh] relative overflow-hidden">
+                <div class="contact-form-info text-center mb-[5vh]">
+                  <h3 class="font-poppins text-3xl md:text-4xl font-normal text-foton-purple">Contact us now</h3>
+                  <h3 class="font-poppins text-3xl md:text-4xl font-normal text-foton-purple mt-1">and step into the future</h3>
+                </div>
+                <form class="max-w-2xl mx-auto" onsubmit="event.preventDefault()">
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <input type="text" placeholder="FIRST NAME" class="form-input w-full h-[50px] px-5 bg-foton-input border-0 rounded text-center text-sm font-poppins text-foton-gray placeholder:text-foton-gray/60 focus:outline-none focus:ring-2 focus:ring-foton-blue/30">
+                    <input type="email" placeholder="E-MAIL" class="form-input w-full h-[50px] px-5 bg-foton-input border-0 rounded text-center text-sm font-poppins text-foton-gray placeholder:text-foton-gray/60 focus:outline-none focus:ring-2 focus:ring-foton-blue/30">
+                  </div>
+                  <div class="mb-4">
+                    <input type="text" placeholder="FULL NAME" class="form-input w-full h-[50px] px-5 bg-foton-input border-0 rounded text-center text-sm font-poppins text-foton-gray placeholder:text-foton-gray/60 focus:outline-none focus:ring-2 focus:ring-foton-blue/30">
+                  </div>
+                  <div class="mb-6">
+                    <textarea placeholder="YOUR MESSAGE" rows="6" class="form-input w-full px-5 py-4 bg-foton-input border-0 rounded text-center text-sm font-poppins text-foton-gray placeholder:text-foton-gray/60 focus:outline-none focus:ring-2 focus:ring-foton-blue/30 resize-none h-[155px]"></textarea>
+                  </div>
+                  <div class="text-center">
+                    <button type="submit" class="submit-btn inline-block h-[50px] px-10 bg-foton-purple text-white text-xs font-poppins tracking-wider uppercase hover:bg-foton-coral transition-colors duration-300">SEND</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination vs-pagination"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Back to Top -->
+  <a href="#" id="back-to-top" class="fixed bottom-8 right-8 z-[9990] w-10 h-10 flex items-center justify-center text-foton-blue opacity-0 pointer-events-none transition-opacity duration-300 hover:text-foton-coral">
+    <svg viewBox="0 0 40 40" class="w-10 h-10" fill="currentColor"><path d="M20,30L20,30c-0.6,0-1-0.4-1-1V13c0-0.6,0.4-1,1-1h0c0.6,0,1,0.4,1,1v16C21,29.6,20.6,30,20,30z"/><path d="M26.4,16.4l-5.7-5.7c-0.4-0.4-1-0.4-1.4,0l-5.7,5.7c-0.4,0.4-0.4,1,0,1.4c0.4,0.4,1,0.4,1.4,0l4.9-4.9l4.9,4.9c0.4,0.4,1,0.4,1.4,0C26.8,17.4,26.8,16.8,26.4,16.4z"/></svg>
+  </a>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
