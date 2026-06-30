@@ -57,6 +57,8 @@
       var isMobile = mkdf.windowWidth < 1025;
       var $bgText = $frameInfo.find('.mkdf-vs-frame-bg-text .mkdf-vs-frame-bg-text-content');
       var $logo = $('.mkdf-logo-wrapper');
+      var currentDevice = 'mobile';
+      var deviceTransitionTimer = null;
 
       var swiper = new Swiper($swiperEl[0], {
         loop: false,
@@ -64,17 +66,26 @@
         slidesPerView: 1,
         mousewheel: {
           invert: false,
+          forceToAxis: true,
+          sensitivity: 1,
+          releaseOnEdges: false,
           eventsTarget: $holder[0]
         },
+        touchRatio: 1,
+        threshold: 8,
+        shortSwipes: true,
+        longSwipes: true,
+        followFinger: true,
         touchStartForcePreventDefault: false,
         speed: isMobile ? 700 : 1000,
         simulateTouch: true,
         allowTouchMove: true,
+        resistanceRatio: 0.85,
         pagination: {
           el: $holder.find('.swiper-pagination')[0],
           clickable: true,
           renderBullet: function (index, className) {
-            return '<span class="' + className + ' bullet-clickable" role="button" aria-label="اسلاید ' + toPersianNum(index + 1) + '"></span>';
+            return '<span class="' + className + ' bullet-clickable" role="button" tabindex="0" aria-label="اسلاید ' + toPersianNum(index + 1) + '"></span>';
           }
         },
         init: false
@@ -102,12 +113,43 @@
 
       $logo.addClass('mkdf-logo-wrapper-vertical-showcase mkdf-vs-frame-even');
 
-      function switchDevice(device) {
-        if (device === 'laptop') {
-          $frameHolder.addClass('mkdf-vs-device-laptop');
-        } else {
-          $frameHolder.removeClass('mkdf-vs-device-laptop');
+      function switchDevice(device, useFade) {
+        if (device === 'contact' || !device) {
+          return;
         }
+
+        if (device === currentDevice) {
+          return;
+        }
+
+        if (deviceTransitionTimer) {
+          clearTimeout(deviceTransitionTimer);
+          deviceTransitionTimer = null;
+        }
+
+        var applyDevice = function () {
+          if (device === 'laptop') {
+            $frameHolder.addClass('mkdf-vs-device-laptop');
+          } else {
+            $frameHolder.removeClass('mkdf-vs-device-laptop');
+          }
+          currentDevice = device;
+        };
+
+        if (useFade && isMobile) {
+          $frameHolder.addClass('mkdf-vs-device-transitioning');
+          deviceTransitionTimer = setTimeout(function () {
+            applyDevice();
+            deviceTransitionTimer = setTimeout(function () {
+              $frameHolder.removeClass('mkdf-vs-device-transitioning');
+              deviceTransitionTimer = null;
+            }, 500);
+          }, 280);
+          return;
+        }
+
+        $frameHolder.removeClass('mkdf-vs-device-transitioning');
+        applyDevice();
       }
 
       function updateStripeRotation(index) {
@@ -227,7 +269,7 @@
           $subtitle.text(current.subtitle);
 
           if (!skipDevice) {
-            switchDevice(current.device);
+            switchDevice(current.device, true);
           }
         }
 
@@ -276,6 +318,15 @@
           $logo.css('opacity', 1);
         }, isMobile ? 300 : 1000);
 
+        $holder.on('click', '.swiper-pagination-bullet', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          var index = $(this).index();
+          if (index >= 0) {
+            swiper.slideTo(index);
+          }
+        });
+
         swiper.on('slideChangeTransitionStart', function () {
           updateInfo();
           updateStripeRotation(slideIndex);
@@ -293,7 +344,8 @@
           $holder.removeClass('mkdf-vs-last-slide');
           $logo.removeClass('mkdf-vs-last-slide');
 
-          switchDevice(current.device);
+          var deviceChanged = current.device !== currentDevice;
+          switchDevice(current.device, deviceChanged);
           hideBgChars();
 
           if (isMobile) {
@@ -331,6 +383,27 @@
 
     var $menu = $('.mkdf-fullscreen-menu-holder-outer');
     var animationClass = 'mkdf-push-nav-right';
+    var menuToggleLock = false;
+
+    function setMenuOpen(isOpen) {
+      $openers.toggleClass('mkdf-fm-opened', isOpen);
+      mkdf.body.toggleClass('mkdf-fullscreen-menu-opened ' + animationClass, isOpen);
+
+      var swiperEl = document.querySelector('.swiper-container');
+      if (swiperEl && swiperEl.swiper) {
+        if (isOpen) {
+          swiperEl.swiper.disable();
+          if (swiperEl.swiper.mousewheel && swiperEl.swiper.mousewheel.disable) {
+            swiperEl.swiper.mousewheel.disable();
+          }
+        } else {
+          swiperEl.swiper.enable();
+          if (swiperEl.swiper.mousewheel && swiperEl.swiper.mousewheel.enable) {
+            swiperEl.swiper.mousewheel.enable();
+          }
+        }
+      }
+    }
 
     $menu.height(mkdf.windowHeight);
     $(window).on('resize', function () {
@@ -339,19 +412,28 @@
 
     $openers.on('click', function (e) {
       e.preventDefault();
-      var $opener = $(this);
+      e.stopPropagation();
 
-      if ($opener.hasClass('mkdf-fm-opened')) {
-        $opener.removeClass('mkdf-fm-opened');
-        mkdf.body.removeClass('mkdf-fullscreen-menu-opened ' + animationClass);
-      } else {
-        $opener.addClass('mkdf-fm-opened');
-        mkdf.body.addClass('mkdf-fullscreen-menu-opened ' + animationClass);
+      if (menuToggleLock) {
+        return;
       }
+
+      menuToggleLock = true;
+      setTimeout(function () {
+        menuToggleLock = false;
+      }, 350);
+
+      var isOpen = $(this).hasClass('mkdf-fm-opened');
+      setMenuOpen(!isOpen);
+    });
+
+    $menu.on('click', function (e) {
+      e.stopPropagation();
     });
 
     $('.mkdf-fullscreen-menu > ul li.has_sub > a').on('click', function (e) {
       e.preventDefault();
+      e.stopPropagation();
       var $li = $(this).parent();
       if ($li.hasClass('open_sub')) {
         $li.removeClass('open_sub').find('> .sub_menu').slideUp(200);
