@@ -10,6 +10,14 @@
     });
   }
 
+  function preloadImages(urls) {
+    urls.forEach(function (src) {
+      if (!src) return;
+      var img = new Image();
+      img.src = src;
+    });
+  }
+
   window.mkdf = window.mkdf || {};
   mkdf.body = $('body');
   mkdf.windowWidth = $(window).width();
@@ -31,7 +39,8 @@
       var $frameHolder = $holder.find('.mkdf-vs-frame-holder');
       var $mobileFrame = $holder.find('.mkdf-vs-frame-mobile-holder');
       var $laptopFrame = $holder.find('.mkdf-vs-frame-laptop-holder');
-      var $innerFrame = $holder.find('.mkdf-vs-inner-frame');
+      var $innerMobile = $holder.find('.mkdf-vs-inner-mobile');
+      var $innerLaptop = $holder.find('.mkdf-vs-inner-laptop');
       var $frameInfo = $holder.find('.mkdf-vs-frame-info');
       var $slideText = $frameInfo.find('.mkdf-vs-frame-slide-text');
       var $slideNumber = $frameInfo.find('.mkdf-vs-frame-slide-number');
@@ -45,6 +54,7 @@
       var slideIndex = 1;
       var isLastSlide = false;
       var stripeRotation = 0;
+      var isMobile = mkdf.windowWidth < 1025;
       var $bgText = $frameInfo.find('.mkdf-vs-frame-bg-text .mkdf-vs-frame-bg-text-content');
       var $logo = $('.mkdf-logo-wrapper');
 
@@ -57,7 +67,7 @@
           eventsTarget: $holder[0]
         },
         touchStartForcePreventDefault: false,
-        speed: 1000,
+        speed: isMobile ? 700 : 1000,
         simulateTouch: true,
         allowTouchMove: true,
         pagination: {
@@ -71,14 +81,16 @@
       });
 
       function setHeights() {
-        if (mkdf.body.hasClass('mkdf-paspartu-enabled') && mkdf.windowWidth >= 1025) {
+        isMobile = mkdf.windowWidth < 1025;
+
+        if (mkdf.body.hasClass('mkdf-paspartu-enabled') && !isMobile) {
           var padding = parseInt($wrapper.css('padding'), 10) || 0;
           $holder.css('height', 'calc(100vh - ' + (padding * 2) + 'px)');
           $swiperEl.css('height', 'calc(100vh - ' + (padding * 2) + 'px)');
-        } else if (mkdf.windowWidth < 1025) {
+        } else if (isMobile) {
           var mobileHeaderHeight = $('.mkdf-mobile-header-inner').outerHeight() || 70;
-          $holder.css('height', 'calc(100vh - ' + mobileHeaderHeight + 'px)');
-          $swiperEl.css('height', 'calc(100vh - ' + mobileHeaderHeight + 'px)');
+          $holder.css('height', 'calc(100dvh - ' + mobileHeaderHeight + 'px)');
+          $swiperEl.css('height', 'calc(100dvh - ' + mobileHeaderHeight + 'px)');
         } else {
           $holder.css('height', '100vh');
           $swiperEl.css('height', '100vh');
@@ -93,14 +105,8 @@
       function switchDevice(device) {
         if (device === 'laptop') {
           $frameHolder.addClass('mkdf-vs-device-laptop');
-          $mobileFrame.hide();
-          $laptopFrame.show();
-          $innerFrame.appendTo($laptopFrame.find('.laptop-screen-bezel'));
         } else {
           $frameHolder.removeClass('mkdf-vs-device-laptop');
-          $mobileFrame.show();
-          $laptopFrame.hide();
-          $innerFrame.appendTo($mobileFrame);
         }
       }
 
@@ -110,12 +116,92 @@
         $stripe.css('transform', 'rotate(' + stripeRotation + 'deg)');
       }
 
-      $holder.waitForImages(function () {
+      function setActiveScreen() {
+        var $active = $swiperEl.find('.swiper-slide-active');
+        var screenIdx = $active.data('screen-index');
+        var device = $active.data('device');
+
+        if (screenIdx === undefined || !device) {
+          return;
+        }
+
+        var $frame = device === 'laptop' ? $innerLaptop : $innerMobile;
+        var $layers = $frame.find('> div');
+
+        $layers.removeClass('prev-active');
+        $layers.filter('.active').removeClass('active').addClass('prev-active');
+
+        if (screenIdx >= 0 && screenIdx < $layers.length) {
+          $layers.eq(screenIdx).addClass('active');
+        }
+      }
+
+      function buildScreenLayers() {
+        var imageUrls = [];
+        var mobileHtml = '';
+        var laptopHtml = '';
+        var mobileIdx = 0;
+        var laptopIdx = 0;
+        var placeholder = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+
+        $slides.each(function (i) {
+          var $slide = $(this);
+          var slideNum = i + 1;
+          var device = $slide.data('device');
+          var $img = $slide.find('.mkdf-vs-item>img');
+
+          $slide.attr('data-slide-index', slideNum);
+
+          if (!device || !$img.length) {
+            return;
+          }
+
+          var src = $img.attr('src') || $img.attr('data-src');
+          var alt = $img.attr('alt') || '';
+
+          if (!src) {
+            return;
+          }
+
+          imageUrls.push(src);
+
+          var layerHtml = '<div class="mkdf-screen-layer" data-slide="' + slideNum + '">' +
+            '<img src="' + src + '" alt="' + alt + '" decoding="async"></div>';
+
+          if (device === 'mobile') {
+            $slide.attr('data-screen-index', mobileIdx);
+            mobileHtml += layerHtml;
+            mobileIdx++;
+          } else if (device === 'laptop') {
+            $slide.attr('data-screen-index', laptopIdx);
+            laptopHtml += layerHtml;
+            laptopIdx++;
+          }
+
+          $img.attr('data-src', src).attr('src', placeholder);
+        });
+
+        $innerMobile.html(mobileHtml);
+        $innerLaptop.html(laptopHtml);
+        preloadImages(imageUrls);
+
+        $innerMobile.find('> div:first-child').addClass('active');
+        $innerLaptop.find('> div:first-child').addClass('active');
+      }
+
+      buildScreenLayers();
+
+      $holder.find('.mkdf-vs-inner-frame img').waitForImages(function () {
         swiper.init();
 
         function readActiveSlide() {
           var $active = $swiperEl.find('.swiper-slide-active');
           slideIndex = $active.data('slide-index') || (swiper.activeIndex + 1);
+
+          if ($active.find('.mkdf-vs-contact-form').length) {
+            return { device: 'contact', text: '', image: '', title: '', subtitle: '' };
+          }
+
           return {
             device: $active.data('device') || 'mobile',
             text: $active.find('.mkdf-vs-item-slide-text').text().trim(),
@@ -131,13 +217,18 @@
           current = readActiveSlide();
         }
 
-        function renderInfo() {
+        function renderInfo(skipDevice) {
+          if (current.device === 'contact') return;
+
           $slideText.text(current.text);
           $slideNumber.text(toPersianNum(slideIndex));
           $titleImage.html(current.image);
           $title.text(current.title);
           $subtitle.text(current.subtitle);
-          switchDevice(current.device);
+
+          if (!skipDevice) {
+            switchDevice(current.device);
+          }
         }
 
         function showBgChars() {
@@ -146,7 +237,7 @@
             var $char = $(this);
             setTimeout(function () {
               $char.addClass('mkdf-show');
-            }, 50 * i);
+            }, 40 * i);
           });
         }
 
@@ -155,19 +246,6 @@
           $bgText.find('span').removeClass('mkdf-show');
         }
 
-        var counter = 1;
-        $slides.each(function () {
-          var $slide = $(this);
-          $slide.attr('data-slide-index', counter);
-          var src = $slide.find('.mkdf-vs-item>img').attr('src');
-          var alt = $slide.find('.mkdf-vs-item>img').attr('alt') || '';
-          if (src) {
-            $innerFrame.append('<div data-device="' + ($slide.data('device') || 'mobile') + '"><img src="' + src + '" alt="' + alt + '"></div>');
-          }
-          counter++;
-        });
-
-        $innerFrame.find('div:first-child').addClass('active');
         updateInfo();
         renderInfo();
         updateStripeRotation(slideIndex);
@@ -188,64 +266,60 @@
         }
 
         setTimeout(function () {
-          setTimeout(function () {
-            $frameInfo.removeClass('mkdf-vs-frame-animate-out');
-          }, 700);
+          $frameInfo.removeClass('mkdf-vs-frame-animate-out');
           $holder.removeClass('mkdf-vs-ready-animation');
-        }, 500);
+        }, isMobile ? 50 : 500);
 
         setTimeout(function () {
           showBgChars();
           $logo.removeClass('mkdf-vs-frame-even');
           $logo.css('opacity', 1);
-        }, 1000);
+        }, isMobile ? 300 : 1000);
 
         swiper.on('slideChangeTransitionStart', function () {
           updateInfo();
           updateStripeRotation(slideIndex);
-
-          var $featureDivs = $innerFrame.find('div');
-          $featureDivs.removeClass('prev-active');
-          $featureDivs.filter('.active').removeClass('active').addClass('prev-active');
-
-          if (slideIndex <= featureSlides.length) {
-            $featureDivs.eq(slideIndex - 1).addClass('active');
-          }
+          setActiveScreen();
 
           if (slideIndex == totalSlides) {
             isLastSlide = true;
             $holder.addClass('mkdf-vs-last-slide');
             $logo.addClass('mkdf-vs-last-slide');
             hideBgChars();
-          } else {
-            isLastSlide = false;
-            $holder.removeClass('mkdf-vs-last-slide');
-            $logo.removeClass('mkdf-vs-last-slide');
+            return;
           }
 
-          if (!isLastSlide) {
-            hideBgChars();
-            $frameInfo.addClass('mkdf-vs-frame-animate-out');
+          isLastSlide = false;
+          $holder.removeClass('mkdf-vs-last-slide');
+          $logo.removeClass('mkdf-vs-last-slide');
 
-            setTimeout(function () {
-              if (slideIndex % 2 === 0) {
-                $logo.addClass('mkdf-vs-frame-even');
-              } else {
-                $logo.removeClass('mkdf-vs-frame-even');
-              }
-            }, 400);
+          switchDevice(current.device);
+          hideBgChars();
 
-            setTimeout(function () {
-              if (slideIndex % 2 === 0) {
-                $frameInfo.addClass('mkdf-vs-frame-even');
-              } else {
-                $frameInfo.removeClass('mkdf-vs-frame-even');
-              }
-              renderInfo();
-              setTimeout(showBgChars, 100);
-              $frameInfo.removeClass('mkdf-vs-frame-animate-out');
-            }, 700);
+          if (isMobile) {
+            renderInfo(true);
+            $frameInfo.removeClass('mkdf-vs-frame-animate-out');
+            setTimeout(showBgChars, 80);
+            return;
           }
+
+          $frameInfo.addClass('mkdf-vs-frame-animate-out');
+
+          setTimeout(function () {
+            if (slideIndex % 2 === 0) {
+              $logo.addClass('mkdf-vs-frame-even');
+              $frameInfo.addClass('mkdf-vs-frame-even');
+            } else {
+              $logo.removeClass('mkdf-vs-frame-even');
+              $frameInfo.removeClass('mkdf-vs-frame-even');
+            }
+            renderInfo(true);
+          }, 400);
+
+          setTimeout(function () {
+            $frameInfo.removeClass('mkdf-vs-frame-animate-out');
+            showBgChars();
+          }, 700);
         });
       });
     });
